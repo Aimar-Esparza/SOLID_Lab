@@ -13,10 +13,13 @@ public class Bill {
 	// Fakturaren totala kalkulatzen duen metodoa.
 	public void totalCalc() {
 		// Dedukzioa kalkulatu
-		billDeduction = (billAmount * deductionPercentage) / 100;
+		DedukzioCalc  d = new DedukzioCalc();
+		billDeduction = d.DedukzioaKalkulatu(billAmount, deductionPercentage);
 		// VAT kalkulatzen dugu
-		VAT = (float) (billAmount * 0.16);
+		VatCalc v = new VatCalc();
+		VAT = v.VatKalkulatu(billAmount);
 		// Totala kalkulatzen dugu
-		billTotal = (billAmount - billDeduction) + VAT;
+		TotalCalc t = new TotalCalc();
+		billTotal = t.TotalKalkulatu(billAmount, billDeduction, VAT);
 	}
 }

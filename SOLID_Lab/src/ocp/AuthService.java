@@ -1,31 +1,24 @@
- package ocp;
+package ocp;
 
- public class AuthService {
-	 public boolean signIn(String service, String log, String pass) {
-		 if (service.compareTo("facebook")==0)
-			 return singInWithFB(log, pass);
-		 if (service.compareTo("google")==0)
-			 return singInWithGoogle(log, pass);
-		 if (service.compareTo("twitter")==0)
-			 return singInWithTwitter(log, pass);
-		 if (service.compareTo("Apple")==0)
-			 return signInWithApple(log, pass);
-		 return false;
-	 }
-	 public boolean singInWithFB(String log, String pass) {
-		 //use the FB api
-		 return true;
-	 }
-	 public boolean singInWithGoogle(String log, String pass) {
-		 //use the google api
-		 return true;
-	 }
-	 public boolean singInWithTwitter(String log, String pass) {
-		 //use the Twitter api
-		 return true;
-	 }
-	 public boolean signInWithApple(String log, String pass) {
-		 //use the Apple api
-		 return true;
-	 }
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
+
+public class AuthService {
+	Map<String, Api> services;
+	
+	public AuthService(ArrayList<Api> services) {
+		this.services = new HashMap<String, Api>();
+		for(int i = 0; i < services.size(); i++) {
+			this.services.put(services.get(i).getName(),services.get(i));
+		}
+	}
+	 
+	public boolean signIn(String service, String log, String pass) {
+		Api api = services.get(service);
+		if(api != null){
+			return api.signIn(log, pass);
+		}
+		return false;
+	}
 }
