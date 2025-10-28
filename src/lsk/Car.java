@@ -1,6 +1,6 @@
 package lsk;
 
-class Car extends TransportationDevice {
+class Car extends EngineTD {
 	 @Override
 	 void startEngine() { 
 		 //...

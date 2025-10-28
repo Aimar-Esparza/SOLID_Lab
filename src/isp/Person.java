@@ -1,6 +1,6 @@
 package isp;
 
-public class Person {
+public class Person implements ITelephone, IEmail{
 	 String name, address, email, telephone;
 	 public void setName(String n) { name=n; }
 	 public String getName() { return name; }

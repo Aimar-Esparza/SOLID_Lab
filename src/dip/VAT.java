@@ -1,9 +1,7 @@
 package dip;
 
-public class VAT {
+public class VAT implements IVAT {
 
-	public VAT() {}
-	
 	public float calcVAT(float billAmount){
 		return billAmount * 5;
 	}

@@ -3,6 +3,9 @@ package dip;
 import java.util.Date;
 
 public class Bill {
+	private IDeduction deduction;
+    private IVAT vat;
+	
 	public String code;
 	public Date billDate;
 	public float billAmount;
@@ -10,15 +13,15 @@ public class Bill {
 	public float billDeduction;
 	public float billTotal;
 	public int deductionPercentage;
+	
+	public Bill(IDeduction deduction, IVAT vat) {
+		this.deduction = deduction;
+		this.vat=vat;
+	}
 	// Fakturaren totala kalkulatzen duen metodoa.
 	public void totalCalc() {
-		// Dedukzioa kalkulatu
-		Deduction d=new Deduction ();
-		billDeduction = d.calcDeduction(billAmount ,deductionPercentage);
-		// VAT kalkulatzen dugu
-		VAT vat=new VAT();
+		billDeduction = deduction.calcDeduction(billAmount ,deductionPercentage);
 		float VATAmount = vat.calcVAT(billAmount);
-		// Totala kalkulatzen dugu
 		billTotal = (billAmount - billDeduction) + VATAmount;
 	}
 }
