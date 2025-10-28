@@ -20,6 +20,6 @@ public class Bill {
 		VAT = v.VatKalkulatu(billAmount);
 		// Totala kalkulatzen dugu
 		TotalCalc t = new TotalCalc();
-		billTotal = t.TotalKalkulatu(billAmount, billDeduction, VAT);
+		billTotal = t.TotalKalkulatu(billAmount, billDeduction, VAT, code);
 	}
 }
